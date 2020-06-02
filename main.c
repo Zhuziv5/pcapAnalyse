@@ -5,7 +5,10 @@ int main(void)
     puts("****************open the file!************************");
 
     FILE *pcapFile = fopen("pcap.txt", "r");
-
+    if (NULL == pcapFile)
+    {
+        return 0;
+    }
     char cprt = 'o';
     while (1)
     {
