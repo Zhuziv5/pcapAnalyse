@@ -1,18 +1,21 @@
 #include <stdio.h>
 #include "pcaptool.h"
 
+char buf[BUF_LEN] = {};
 int main(void)
 {
     puts("****************open the file!************************");
 
-    char buf[BUF_LEN] = {};
-    FILE *pcapFile = fopen("pcap.txt", "r");
+    readPcapFileToBuf("pcap.txt", "r");
 
-    if (NULL == pcapFile)
-    {
-        return 0;
-    }
-    char cprt = 'o';
+    puts("****************read the file!************************");
+}
+
+char readPcapFileToBuf(void *filePath, void *accessMode)
+{
+    FILE *pcapFile = fopen(filePath, accessMode);
+    NULL_POINTER_RTN(pcapFile, NULL);
+    char cprt = '0';
     unsigned int i = 0;
     while (1)
     {
@@ -24,13 +27,7 @@ int main(void)
         buf[i++] = cprt;
         printf("%c", cprt);
     }
-
     fclose(pcapFile);
-
-    puts("\n****************file has been closed!****************");
     printf("%s", buf);
-}
-
-void *readPcapFileToBuf(void *FilePath, void *AcessMode)
-{
+    return SUCCESS;
 }
