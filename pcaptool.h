@@ -2,4 +2,6 @@
 #define __PCAPTOOL_H__
 #endif
 
-void *readPcapFile();
+void *readPcapFileToBuf(void *FilePath, void *AcessMode);
+
+#define BUF_LEN 1024
