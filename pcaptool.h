@@ -2,8 +2,12 @@
 #define __PCAPTOOL_H__
 #endif
 
+#include <stdio.h>
+#include <string.h>
+
 char readPcapFileToBuf(void *FilePath, void *AcessMode);
 char getHttpReqHeader(char *pcapReq);
+char findSubstring(char *str1, char *str2);
 void releaseBuf();
 
 #define VERSION_LENGTH 8
@@ -13,7 +17,7 @@ void releaseBuf();
 #define SUCCESS 0
 
 extern char buf[BUF_LEN];
-extern char *method;
+extern char *method[];
 #define NULL_POINTER_RTN(POINTER, UNEXCEPTED) \
     do                                        \
     {                                         \
