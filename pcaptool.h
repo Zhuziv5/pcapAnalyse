@@ -3,7 +3,7 @@
 #endif
 
 char readPcapFileToBuf(void *FilePath, void *AcessMode);
-void getPcapReqMethod();
+char getHttpReqHeader(char *pcapReq);
 void releaseBuf();
 
 #define VERSION_LENGTH 8
@@ -13,7 +13,7 @@ void releaseBuf();
 #define SUCCESS 0
 
 extern char buf[BUF_LEN];
-
+extern char *method;
 #define NULL_POINTER_RTN(POINTER, UNEXCEPTED) \
     do                                        \
     {                                         \

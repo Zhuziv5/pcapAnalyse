@@ -3,7 +3,8 @@
 #include "pcaptool.h"
 
 char buf[BUF_LEN] = {};
-
+char *method = {"get ", "put ", "head ", "post ", "delete ",
+                "connect ", "trace "};
 char readPcapFileToBuf(void *filePath, void *accessMode)
 {
     FILE *pcapFile = fopen(filePath, accessMode);
@@ -23,11 +24,27 @@ char readPcapFileToBuf(void *filePath, void *accessMode)
     }
     fclose(pcapFile);
     printf("%s", buf);
-    releaseBuf();
+    // releaseBuf();
     return SUCCESS;
 }
 
 void releaseBuf()
 {
     memset(buf, 0, BUF_LEN);
+}
+
+char getHttpReqHeader(char *pcapReq)
+{
+    NULL_POINTER_RTN(pcapReq, NULL);
+    unsigned char i = 0;
+    //TODO--处理一下输入的请求行，方法有可能是大写的
+    while (i < 7)
+    {
+        if (0 <= strcmp(pcapReq, &method[i]))
+        {
+            break;
+        }
+        i++;
+    }
+    return i;
 }
