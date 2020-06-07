@@ -32,20 +32,3 @@ void releaseBuf()
 {
     memset(buf, 0, BUF_LEN);
 }
-
-char getHttpReqHeader(char *pcapReq)
-{
-    if (NULL == pcapReq)
-        return -1;
-    unsigned char i = 0;
-    //TODO--处理一下输入的请求行，方法有可能是大写的
-    while (i < 7)
-    {
-        if (0 <= strcmp(pcapReq, method[i]))
-        {
-            break;
-        }
-        i++;
-    }
-    return i;
-}
