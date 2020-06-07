@@ -1,6 +1,6 @@
 #include "pcaptool.h"
 
-char buf[BUF_LEN] = {};
+char buf[BUF_LEN] = {0};
 char *method[] = {"get ", "put ", "head ", "post ", "delete ",
                   "connect ", "trace "};
 char readPcapFileToBuf(void *filePath, void *accessMode)

@@ -8,6 +8,8 @@
 char readPcapFileToBuf(void *FilePath, void *AcessMode);
 char getHttpReqHeader(char *pcapReq);
 char findSubstring(char *str1, char *str2);
+char getRequestLine(char *pcapReq);
+char *copyBufToReqline(unsigned int offset);
 void releaseBuf();
 
 #define VERSION_LENGTH 8
