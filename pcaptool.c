@@ -20,10 +20,10 @@ char readPcapFileToBuf(void *filePath, void *accessMode)
             break;
         }
         buf[i++] = cprt;
-        printf("%c", cprt);
+        // printf("%c", cprt);
     }
     fclose(pcapFile);
-    printf("%s", buf);
+    // printf("%s", buf);
     // releaseBuf();
     return SUCCESS;
 }

@@ -8,8 +8,8 @@
 char readPcapFileToBuf(void *FilePath, void *AcessMode);
 char getHttpReqHeader(char *pcapReq);
 char findSubstring(char *str1, char *str2);
-char getRequestLine(char *pcapReq);
-char *copyBufToReqline(unsigned int offset);
+char getHttpHeaderFirstLine(char *pcapReq);
+char *copyBufToHttpFirstLine(unsigned int offset);
 char *findFieldInString(char *str, char **set, unsigned int setLen);
 void releaseBuf();
 
@@ -21,6 +21,7 @@ void releaseBuf();
 
 extern char buf[BUF_LEN];
 extern char *method[];
+extern char *statusCode[];
 #define NULL_POINTER_RTN(POINTER, UNEXCEPTED) \
     do                                        \
     {                                         \
