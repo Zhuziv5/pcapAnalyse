@@ -3,6 +3,8 @@
 char buf[BUF_LEN] = {0};
 char *method[] = {"get ", "put ", "head ", "post ", "delete ",
                   "connect ", "trace "};
+char *statusCode[] = {"200 ", "404 ", "304 ", "302 ", "403 ",
+                      "500 ", "502 "};
 char readPcapFileToBuf(void *filePath, void *accessMode)
 {
     FILE *pcapFile = fopen(filePath, accessMode);
@@ -34,9 +36,7 @@ void releaseBuf()
 char getHttpReqHeader(char *pcapReq)
 {
     if (NULL == pcapReq)
-    {
         return -1;
-    }
     unsigned char i = 0;
     //TODO--处理一下输入的请求行，方法有可能是大写的
     while (i < 7)

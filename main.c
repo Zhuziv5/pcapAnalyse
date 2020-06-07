@@ -8,22 +8,16 @@ int main(void)
     readPcapFileToBuf("pcapReq.txt", "r");
     // printf("%s\n", buf);
     unsigned int index = 0;
-    char *reqLine;
+    char *reqLine, *reqMethod;
     index = getRequestLine(buf);
-    printf("reqline is %d\n", index);
+    printf("reqline length is %d\n", index);
     reqLine = (char *)copyBufToReqline(index);
-    printf("reqline is %s\n", reqLine);
-
-    findSubstring(buf, "get");
-    char index = 7;
-    index = getHttpReqHeader(buf);
-    if (index > 6)
+    reqMethod = findFieldInString(reqLine, method, sizeof(*method));
+    if (NULL == reqMethod)
     {
-        puts("Pcapfile doesn't have request method!");
+        puts("Request doesn't have method!");
+        return 0;
     }
-    else
-    {
-        printf("Method of request line is %s\n", method[index]);
-    }
+    printf("reqline string is %s\n", reqLine);
     puts("****************read the file!************************");
 }

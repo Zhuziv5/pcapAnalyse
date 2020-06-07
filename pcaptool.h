@@ -10,6 +10,7 @@ char getHttpReqHeader(char *pcapReq);
 char findSubstring(char *str1, char *str2);
 char getRequestLine(char *pcapReq);
 char *copyBufToReqline(unsigned int offset);
+char *findFieldInString(char *str, char **set, unsigned int setLen);
 void releaseBuf();
 
 #define VERSION_LENGTH 8
