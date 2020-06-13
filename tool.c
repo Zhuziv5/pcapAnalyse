@@ -28,7 +28,7 @@ char findSubstring(char *str1, char *str2)
     {
         char *strLoop = cur;
         char *subLoop = str2;
-        while (subLoop && strLoop && *subLoop == *strLoop)
+        while (*subLoop && *strLoop && *subLoop == *strLoop)
         {
             subLoop++;
             strLoop++;
